@@ -1,0 +1,28 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+        Helvetica Neue, sans-serif;
+}
+
+#nprogress .bar {
+    background: rgb(var(--color-attention-primary, 33, 150, 243)) !important;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+    box-shadow: 0 0 10px rgb(var(--color-attention-primary, 33, 150, 243)),
+        0 0 5px rgb(var(--color-attention-primary, 33, 150, 243)) !important;
+}
+
+#nprogress .spinner-icon {
+    border-top-color: rgb(var(--color-attention-primary, 33, 150, 243)) !important;
+    border-left-color: rgb(var(--color-attention-primary, 33, 150, 243)) !important;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}

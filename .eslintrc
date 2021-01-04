@@ -1,0 +1,28 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": ["plugin:@typescript-eslint/recommended", "plugin:react/recommended"],
+    "plugins": ["prettier"],
+    "rules": {
+        "object-curly-spacing": ["warn", "always"],
+        "jsx-quotes": ["warn", "prefer-single"],
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": ["warn"],
+        "react/jsx-filename-extension": ["off"],
+        "react/jsx-closing-bracket-location": ["off"],
+        "react/jsx-props-no-spreading": ["off"],
+        "react/jsx-tag-spacing": [
+            "error",
+            {
+                "closingSlash": "never",
+                "beforeSelfClosing": "always",
+                "afterOpening": "never",
+                "beforeClosing": "never"
+            }
+        ],
+        "react/display-name": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off"
+    },
+    "globals": {
+        "React": "writable"
+    }
+}
