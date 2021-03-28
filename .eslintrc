@@ -6,7 +6,7 @@
         "object-curly-spacing": ["warn", "always"],
         "jsx-quotes": ["warn", "prefer-single"],
         "react/react-in-jsx-scope": "off",
-        "react/prop-types": ["warn"],
+        "react/prop-types": ["off"],
         "react/jsx-filename-extension": ["off"],
         "react/jsx-closing-bracket-location": ["off"],
         "react/jsx-props-no-spreading": ["off"],

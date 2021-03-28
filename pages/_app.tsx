@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-
 import Router from 'next/router';
 import { AppProps } from 'next/app';
+import { Provider as AuthProvider } from 'next-auth/client';
 
 import NProgress from 'nprogress';
 
@@ -18,8 +18,11 @@ const App: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
     }, []);
 
     return (
-        <Component {...pageProps} />
+        <AuthProvider session={pageProps.session}>
+            <Component {...pageProps} />
+        </AuthProvider>
     );
 };
+
 
 export default App;
