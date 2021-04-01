@@ -1,7 +1,9 @@
-import Adapters from 'next-auth/adapters'
+import Adapters, { TypeORMUserModel } from 'next-auth/adapters'
 
 
-class User extends Adapters.TypeORM.Models.User.model {
+const NextAuthUser = Adapters.TypeORM.Models.User.model as typeof TypeORMUserModel;
+
+class User extends NextAuthUser {
     public permissions: string[];
 
     constructor(name, email, image, emailVerified, permissions: string[] = []) {

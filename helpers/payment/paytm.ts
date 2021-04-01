@@ -1,6 +1,14 @@
 import axios from 'axios';
 
-export const paytmTransaction = async (amount, type) => {
+export const PaytmCheckout = () => {
+    if (typeof window === 'undefined') return false;
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return window && window.Paytm && window.Paytm.CheckoutJS;
+}
+
+export const initiatePaytmTransaction = async (amount, type) => {
     const { data: { txnToken, orderId } } = await axios.post('/api/payment/paytm/init/', {
         amount,
         type,
@@ -16,18 +24,11 @@ export const paytmTransaction = async (amount, type) => {
             'amount': amount,
         },
         'handler': {
-            'notifyMerchant': function(eventName, data) {
-                console.log('notifyMerchant handler function called');
-                console.log('eventName => ', eventName);
-                console.log('data => ', data);
-            },
+            'notifyMerchant': function(eventName, data) {},
         },
     };
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const CheckoutJS = window.Paytm && window.Paytm.CheckoutJS;
-
+    const CheckoutJS = PaytmCheckout();
     if (CheckoutJS) {
         await CheckoutJS.init(config);
         CheckoutJS.invoke();

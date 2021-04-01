@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import { NextPage } from 'next';
 import { getSession } from 'next-auth/client';
 import { useRouter } from 'next/router'
-
-
-import Page from 'components/oragnisms/Page';
 import axios from 'axios';
+
+import Page from 'components/organisms/Page';
 
 
 const PaytmStatus: NextPage = () => {
     const router = useRouter();
-    console.log(router.query);
     const { orderId } = router.query;
 
     const [status, setStatus] = useState('INVALID');
@@ -26,7 +24,7 @@ const PaytmStatus: NextPage = () => {
     }, [orderId]);
 
     return (
-        <Page>
+        <Page title={`Status of order: ${orderId}`} description='Check your transaction status'>
             {loading && 'Loading...'}
             {!loading && (
                 <>

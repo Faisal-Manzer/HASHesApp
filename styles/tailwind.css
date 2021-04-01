@@ -8,3 +8,16 @@
 a {
     @apply cursor-pointer;
 }
+
+#nprogress .bar {
+    @apply bg-yellow-500;
+}
+
+#nprogress .peg {
+    box-shadow: 0 0 10px #F59E0B, 0 0 5px #F59E0B;
+}
+
+#nprogress .spinner-icon {
+    border-top-color: #F59E0B;
+    border-left-color: #F59E0B;
+}

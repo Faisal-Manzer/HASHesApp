@@ -1,7 +1,10 @@
 import React from 'react';
 import { signIn, signOut, useSession } from 'next-auth/client';
+import ReactTooltip from 'react-tooltip';
 
 import Button from 'components/atoms/Button';
+import LoginIcon from 'components/icons/LogoutIcon';
+import LogoutIcon from 'components/icons/LogoutIcon';
 
 
 const LoginWithGoogle = () => {
@@ -11,17 +14,28 @@ const LoginWithGoogle = () => {
 
     if (!session)
         return (
-            <Button onClick={() => signIn('google')} icon='ion-logo-google text-gray-900 text-2xl' className='bg-gray-200'>
-                Login With Google
+            <Button onClick={() => signIn('google')} className='bg-black rounded-lg text-white hover:shadow text-lg'>
+                <LoginIcon className='h-6 mx-2' />
+                Sign In
             </Button>
         );
 
     return (
-        <Button onClick={signOut} className='bg-gray-200'>
-            <img className='w-8 h-8 rounded-full mx-2' src={session.user.image} alt={session.user.name} />
-            {session.user.email}
-        </Button>
-    )
+        <>
+            <Button onClick={signOut} className='text-lg' data-tip data-for='sign-out-tooltip'>
+                <img className='w-8 h-8 rounded-full mx-2' src={session.user.image} alt={session.user.name} />
+                <LogoutIcon className='h-6' />
+            </Button>
+
+            <ReactTooltip id='sign-out-tooltip' effect='solid' place='bottom' className='bg-gray-700 text-white'>
+                <b>
+                    {session.user.name}
+                </b>
+                {' '}
+                ({session.user.email})
+            </ReactTooltip>
+        </>
+    );
 };
 
 export default LoginWithGoogle;

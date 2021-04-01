@@ -7,7 +7,7 @@ interface Params {
 }
 
 
-export const useScript = (src: string, { callback, id, ...attributes }: Params) => {
+export const useScript = (src: string, { callback, id, }: Params) => {
     const [loaded, setLoaded] = useState(false);
     useEffect(() => {
         const existingScript = document.getElementById(id);
@@ -23,6 +23,8 @@ export const useScript = (src: string, { callback, id, ...attributes }: Params) 
             };
 
             document.body.appendChild(script);
+        } else {
+            if (callback) callback();
         }
     }, []);
 

@@ -1,14 +1,26 @@
-import React  from 'react';
+import React from 'react';
 
 interface IProps {
     height?: string;
+    className: string;
 }
 
 
-const Logo: React.FC<IProps> = ({ height= 'h-8' }) => {
+const Logo: React.FC<IProps> = ({ className }) => {
     return (
         <div className='inline-block m-0 p-0'>
-            <img className={`w-auto ${height}`} src='/images/HASHes-Banner.svg' alt='' />
+            <svg className={`w-auto ${className}`} viewBox='0 0 100 100' version='1.1'
+                 xmlns='http://www.w3.org/2000/svg'>
+                <title>HASHes Logo</title>
+                <g stroke='none' strokeWidth='1' fill='none' fillRule='evenodd'>
+                    <g transform='translate(-269.000000, -453.000000)' fill='#F59E0B'>
+                        <g id='Logo' transform='translate(269.000000, 453.000000)'>
+                            <path
+                                d='M50,0 C77.6142375,0 100,22.3857625 100,50 C100,77.6142375 77.6142375,100 50,100 C22.3857625,100 0,77.6142375 0,50 C0,22.3857625 22.3857625,0 50,0 Z M48.4205104,25 L38.7684213,25 L37.4199676,35.5747153 L27.342051,35.5747153 L27.342051,44.7300058 L36.2844277,44.7300058 L35.0779166,54.9498648 L25,54.9498648 L25,64.1051553 L33.9423767,64.1051553 L32.5939231,74.6798706 L42.2460122,74.6798706 L43.5944659,64.1051553 L52.3239288,64.1051553 L50.9754752,74.6798706 L60.6275643,74.6798706 L61.976018,64.1051553 L71.9829633,64.1051553 L71.9829633,54.9498648 L63.1115579,54.9498648 L64.318069,44.7300058 L74.3959856,44.7300058 L74.3959856,35.5747153 L65.4536089,35.5747153 L66.8020625,25 L57.1499734,25 L55.8015198,35.5747153 L47.0720568,35.5747153 L48.4205104,25 Z M54.6659799,44.7300058 L53.4594687,54.9498648 L44.7300058,54.9498648 L45.9365169,44.7300058 L54.6659799,44.7300058 Z' />
+                        </g>
+                    </g>
+                </g>
+            </svg>
         </div>
     );
 };

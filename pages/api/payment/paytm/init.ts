@@ -21,7 +21,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         if (!session) return error(__.LOGIN_REQUIRED);
 
         const { user: { uid } } = session;
-        const mid = process.env.PAYTM_MID;
+        const mid = process.env.NEXT_PUBLIC_PAYTM_MID;
 
         const orderId = uniqueId();
 
@@ -46,7 +46,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             head: { signature }
         });
         const response = await axios.post(
-            `${process.env.PAYTM_URI}/theia/api/v1/initiateTransaction?mid=${mid}&orderId=${orderId}`,
+            `${process.env.NEXT_PUBLIC_PAYTM_URI}/theia/api/v1/initiateTransaction?mid=${mid}&orderId=${orderId}`,
             postData,
             {
                 headers: {

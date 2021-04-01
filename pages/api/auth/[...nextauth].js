@@ -27,9 +27,8 @@ export default NextAuth({
             return session;
         },
     },
-    pages: {
-        newUser: '/auth/complete-signup',
-    },
+    pages: {},
+    jwt: process.env.JWT_ENCRYPTION_KEY,
     adapter: Adapters.TypeORM.Adapter(
         process.env.DATABASE_URL,
         {

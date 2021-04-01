@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import React from 'react';
 
 
 class CustomDocument extends Document {
@@ -7,14 +8,13 @@ class CustomDocument extends Document {
             <Html>
                 <Head>
                     <link rel='preconnect' href='https://fonts.gstatic.com' />
-                    <link rel='preconnect' href='https://unpkg.com' />
-
+                    <link rel='preload' href='https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&family=Montserrat:wght@100;400;900&display=swap' as='style' />
                     <link
-                        href='https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&family=Montserrat:wght@100;400;900&display=swap'
-                        rel='stylesheet' />
-                    <link href='https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css' rel='stylesheet' />
+                        href='https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&family=Montserrat:wght@100;400;900&display=swap'
+                        rel='stylesheet'
+                    />
                 </Head>
-                <body className='font-body font-medium text-gray-700'>
+                <body className='font-body font-medium bg-gray-50 text-gray-900'>
                 <Main />
                 <NextScript />
                 </body>
