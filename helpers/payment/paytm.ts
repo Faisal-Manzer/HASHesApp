@@ -6,7 +6,7 @@ export const PaytmCheckout = () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     return window && window.Paytm && window.Paytm.CheckoutJS;
-}
+};
 
 export const initiatePaytmTransaction = async (amount, type) => {
     const { data: { txnToken, orderId } } = await axios.post('/api/payment/paytm/init/', {
@@ -18,13 +18,28 @@ export const initiatePaytmTransaction = async (amount, type) => {
         'root': '',
         'flow': 'DEFAULT',
         'data': {
-            'orderId': orderId,
-            'token': txnToken,
-            'tokenType': 'TXN_TOKEN',
-            'amount': amount,
+            orderId: orderId,
+            token: txnToken,
+            tokenType: 'TXN_TOKEN',
+            amount: amount,
         },
-        'handler': {
-            'notifyMerchant': function(eventName, data) {},
+        style: {
+            themeBackgroundColor: '#000000',
+            themeColor: '#ffffff',
+            headerBackgroundColor: '#ffffff',
+            headerColor: '#000000',
+        },
+        merchant: {
+            name: 'HASHes',
+            // redirect: false,
+        },
+        handler: {
+            notifyMerchant: function(eventName, data) {
+                console.log('PAYTM EVENT', eventName, data);
+            },
+            transactionStatus: function(data) {
+                console.log('PAYTM Payment status ', data);
+            },
         },
     };
 

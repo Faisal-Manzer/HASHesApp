@@ -21,6 +21,7 @@ const Page: React.FC<IProps> = ({ children, title, description, className = '', 
         {!hideDonateBanner && <DonateBanner />}
         {!hideNavbar && <Navbar />}
         <div className='p-4 md:p-8'>
+            <div className='w-full h-1' id='progress-parent' />
             {children}
         </div>
     </div>

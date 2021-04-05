@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NextPage } from 'next';
 import { getSession } from 'next-auth/client';
+import NProgress from 'nprogress';
 
 import withAuthentication from 'components/hocs/withAuthentications';
 import Page from 'components/organisms/Page';
@@ -9,13 +10,14 @@ import Button from 'components/atoms/Button';
 import HeartIcon from 'components/icons/HeartIcon';
 
 import { usePaytmCheckout } from 'hooks/payments';
+import PageHeading from 'components/atoms/PageHeading';
 
 
 const DefaultAmounts = [50, 100, 500, 1000];
 
 const DonateButton = ({ price, amount, setAmount }) => (
     <Button onClick={() => setAmount(price)}
-            className={`p-2 border-2 border-gray-100 rounded-lg text-lg justify-center transition duration-500 ease-in-out ${price === amount ? 'bg-black text-gray-100' : 'text-gray-500'}`}>
+            className={`p-2 rounded-lg text-lg justify-center transition duration-500 ease-in-out ${price === amount ? 'bg-yellow-500 text-gray-100 shadow-lg' : 'text-gray-500 border-2 border-gray-100'}`}>
         &#8377; {price}
     </Button>
 );
@@ -26,10 +28,19 @@ const Donate: NextPage = () => {
     const [started, setStarted] = useState(false);
     const { loaded, paytm } = usePaytmCheckout();
 
+    useEffect(() => {
+        if (loaded) NProgress.done();
+    }, []);
+
     const donate = () => {
         setStarted(true);
+        NProgress.start();
+
         paytm(amount, 'DONATE')
-            .finally(() => setStarted(false));
+            .finally(() => {
+                setStarted(false);
+                NProgress.done();
+            });
     };
 
     return (
@@ -39,9 +50,9 @@ const Donate: NextPage = () => {
             className='text-center'
             hideDonateBanner={true}
         >
-            <h1 className='text-black font-display font-black text-4xl md:text-7xl'>
+            <PageHeading>
                 Donate <HeartIcon className='h-6 md:h-12 text-yellow-500' />
-            </h1>
+            </PageHeading>
 
             <div className='flex justify-center items-center mt-8'>
                 <div className='shadow-lg bg-white p-4 rounded'>
@@ -58,14 +69,14 @@ const Donate: NextPage = () => {
                     <input
                         type='number'
                         placeholder='Your Custom Amount'
-                        className={`w-full border-2 border-gray-100 rounded-lg text-lg ${DefaultAmounts.includes(amount)? 'bg-white text-gray-700' : 'bg-black text-gray-100'} focus:bg-black focus:text-gray-100 focus:border-black transition`}
+                        className={`w-full rounded-lg text-lg border-2 border-gray-200 ${DefaultAmounts.includes(amount) ? 'bg-white text-gray-700' : 'bg-gray-700 text-white'} focus:bg-gray-700 focus:text-white transition`}
                         onChange={(e) => setAmount(Math.abs(Number(e.target.value || 50)))}
                         min={1}
                     />
 
                     <Button
                         onClick={donate}
-                        className='bg-yellow-600 text-white text-lg w-full justify-center mt-6'
+                        className='bg-black text-white text-lg w-full justify-center mt-6'
                         loading={started || !loaded}
                         disabled={started || !loaded}
                     >

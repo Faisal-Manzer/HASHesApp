@@ -5,6 +5,10 @@
 
 @tailwind utilities;
 
+*,*:focus,*:hover{
+    outline:none !important;
+}
+
 a {
     @apply cursor-pointer;
 }
