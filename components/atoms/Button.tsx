@@ -33,9 +33,9 @@ const Button: React.FC<IProps> = ({
             <button
                 disabled={disabled}
                 onClick={() => onClick && !disabled && onClick()}
-                className={`inline-flex items-center cursor-pointer rounded p-2 space-x-2 disabled:cursor-not-allowed ${className}`} {...extra}
+                className={`inline-flex items-center cursor-pointer rounded p-2 space-x-2 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:outline-none ${className}`} {...extra}
             >
-                {loading && <Spinner />}
+                {loading && <Spinner className='h-5' />}
                 {children}
             </button>
         </Wrapper>

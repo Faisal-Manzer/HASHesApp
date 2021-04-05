@@ -13,4 +13,4 @@ const PaytmPaymentDetail = new Schema({
     callBackData: { type: Schema.Types.Mixed }
 }, { timestamps: true });
 
-export default mongoose.models.paytmPaymentDetail || mongoose.model('paytmPaymentDetail', PaytmPaymentDetail);
+export default mongoose.models.PaytmPaymentDetail || mongoose.model('PaytmPaymentDetail', PaytmPaymentDetail);

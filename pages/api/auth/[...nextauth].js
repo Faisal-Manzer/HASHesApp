@@ -28,7 +28,9 @@ export default NextAuth({
         },
     },
     pages: {},
-    jwt: process.env.JWT_ENCRYPTION_KEY,
+    jwt: {
+        signingKey: process.env.JWT_ENCRYPTION_KEY,
+    },
     adapter: Adapters.TypeORM.Adapter(
         process.env.DATABASE_URL,
         {
