@@ -3,14 +3,14 @@ import { NextPage } from 'next';
 import { getSession } from 'next-auth/client';
 import NProgress from 'nprogress';
 
-import withAuthentication from 'components/hocs/withAuthentications';
 import Page from 'components/organisms/Page';
 
 import Button from 'components/atoms/Button';
+import Input from 'components/atoms/Input';
+import PageHeading from 'components/atoms/PageHeading';
 import HeartIcon from 'components/icons/HeartIcon';
 
 import { usePaytmCheckout } from 'hooks/payments';
-import PageHeading from 'components/atoms/PageHeading';
 
 
 const DefaultAmounts = [50, 100, 500, 1000];
@@ -49,6 +49,7 @@ const Donate: NextPage = () => {
             description=''
             className='text-center'
             hideDonateBanner={true}
+            authenticationRequired={true}
         >
             <PageHeading>
                 Donate <HeartIcon className='h-6 md:h-12 text-yellow-500' />
@@ -64,15 +65,15 @@ const Donate: NextPage = () => {
                         {DefaultAmounts.map((price) => (
                             <DonateButton key={price.toString()} price={price} setAmount={setAmount} amount={amount} />
                         ))}
-                    </div>
 
-                    <input
-                        type='number'
-                        placeholder='Your Custom Amount'
-                        className={`w-full rounded-lg text-lg border-2 border-gray-200 ${DefaultAmounts.includes(amount) ? 'bg-white text-gray-700' : 'bg-gray-700 text-white'} focus:bg-gray-700 focus:text-white transition`}
-                        onChange={(e) => setAmount(Math.abs(Number(e.target.value || 50)))}
-                        min={1}
-                    />
+                        <Input
+                            type='number'
+                            min={1}
+                            placeholder='Your Custom Amount'
+                            onChange={(value) => setAmount(Number(value || '50'))}
+                            className='col-span-1 md:col-span-2'
+                        />
+                    </div>
 
                     <Button
                         onClick={donate}
@@ -94,4 +95,4 @@ export async function getServerSideProps(context) {
     return { props: { session } };
 }
 
-export default withAuthentication(Donate);
+export default Donate;
