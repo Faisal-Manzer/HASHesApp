@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import NProgress from 'nprogress';
 
-import { useScript } from 'hooks/scripts';
-import { PaytmCheckout, initiatePaytmTransaction } from 'helpers/payment/paytm';
+import { useScript } from 'hooks/scripts.hook';
+import { PaytmCheckout, initiatePaytmTransaction } from 'helpers/payment/paytm.payment.helper';
 
 const PAYTM_URI = process.env.NEXT_PUBLIC_PAYTM_URI;
 const PAYTM_MID = process.env.NEXT_PUBLIC_PAYTM_MID;

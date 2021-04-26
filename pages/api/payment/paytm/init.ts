@@ -3,11 +3,12 @@ import { getSession } from 'next-auth/client';
 import ShortUniqueId from 'short-unique-id';
 import axios from 'axios';
 
-import MongooseConnect from 'middleware/mongoose';
+import MongooseConnect from 'middleware/mongoose.middleware';
 import { APIError, __ } from 'helpers/errors';
-import PaytmPayment from 'models/paytmPayment';
-import PaytmChecksum from 'helpers/PaytmChecksum';
+import PaytmPayment from 'models/paytmPayment.model';
+import PaytmChecksum from 'helpers/payment/paytmChecksum.payment.helper';
 
+const prefix = process.env.PREFIX || '';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const error = APIError(res);
@@ -23,7 +24,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const { user: { uid } } = session;
         const mid = process.env.NEXT_PUBLIC_PAYTM_MID;
 
-        const orderId = uniqueId();
+        const orderId = prefix + uniqueId();
 
         const payload = {
             requestType: 'Payment',
@@ -55,16 +56,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 }
             }
         );
+
         const { data: { body: { txnToken, resultInfo: { resultStatus } } } } = response;
         if (resultStatus === 'S') {
             const transaction = new PaytmPayment({ user: uid, amount, orderId, txnToken, type });
             const transactionResponse = await transaction.save();
             res.json(transactionResponse);
         } else {
+            console.log('Paytm error in transaction creation');
             error(__.UNKNOWN_ERROR_OCCURRED);
         }
 
     } catch (e) {
+        console.log('Error: ');
         console.log(e);
         error(__.UNKNOWN_ERROR_OCCURRED);
     }

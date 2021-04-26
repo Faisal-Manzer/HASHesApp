@@ -1,5 +1,5 @@
-import $ from 'helpers/authorization/permissions';
-import { Role } from 'types/authorization';
+import $ from 'helpers/auth/permissions.auth.helper';
+import { Role } from 'types/auth.type';
 
 const ROLES: Role[] = [
     {

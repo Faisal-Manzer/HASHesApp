@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 
-const PaytmPaymentDetail = new Schema({
+const PaytmPayment = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'users', required: true },
     amount: { type: Number, required: true },
     orderId: { type: String, required: true },
@@ -13,4 +13,4 @@ const PaytmPaymentDetail = new Schema({
     callBackData: { type: Schema.Types.Mixed }
 }, { timestamps: true });
 
-export default mongoose.models.PaytmPaymentDetail || mongoose.model('PaytmPaymentDetail', PaytmPaymentDetail);
+export default mongoose.models.PaytmPayment || mongoose.model('PaytmPayment', PaytmPayment);

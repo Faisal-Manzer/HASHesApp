@@ -1,7 +1,7 @@
-import { Permissions } from 'types/authorization';
+import { Permissions } from 'types/auth.type';
 
 
-const PERMISSIONS: Permissions = {
+const $: Permissions = {
     SUPER_USER: {
         label: 'Super User',
         code: 'super_user',
@@ -16,4 +16,4 @@ const PERMISSIONS: Permissions = {
     },
 };
 
-export default PERMISSIONS;
+export default $;

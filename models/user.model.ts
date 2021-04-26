@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-import { PermissionsCodes } from 'helpers/authorization';
+import { PermissionsCodes } from 'helpers/auth';
 
 
 const users = new Schema({

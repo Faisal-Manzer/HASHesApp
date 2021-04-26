@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import Spinner from 'components/atoms/Spinners';
+import Spinner from 'components/atoms/Spinner';
 
-interface IProps {
+interface Props {
     className?: string;
     href?: string;
 
@@ -17,15 +17,15 @@ interface IProps {
 
 const Div = ({ children }) => children;
 
-const Button: React.FC<IProps> = ({
-                                      children,
-                                      className = '',
-                                      href,
-                                      disabled = false,
-                                      onClick,
-                                      loading = false,
-                                      ...extra
-                                  }) => {
+const Button: React.FC<Props> = ({
+    children,
+    className = '',
+    href,
+    disabled = false,
+    onClick,
+    loading = false,
+    ...extra
+}) => {
     const Wrapper = React.useMemo(() => href ? Link : Div, [href]);
 
     return (

@@ -1,8 +1,12 @@
 import React from 'react';
 
 
-const PageHeading: React.FC = ({ children }) => (
-    <h1 className='text-black font-display font-black text-4xl md:text-7xl'>
+interface Props {
+    className?: string;
+}
+
+const PageHeading: React.FC<Props> = ({ children, className = '' }) => (
+    <h1 className={`font-display font-black text-4xl md:text-7xl ${className}`}>
         {children}
     </h1>
 

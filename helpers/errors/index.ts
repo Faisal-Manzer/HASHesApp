@@ -1,6 +1,6 @@
 import { NextApiResponse } from 'next';
 
-import * as CODES from 'helpers/errors/codes';
+import * as CODES from 'helpers/errors/codes.errors.helper';
 
 
 export const APIError = (res: NextApiResponse) => (error) => {

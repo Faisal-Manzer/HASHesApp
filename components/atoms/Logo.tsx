@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface IProps {
+interface Props {
     height?: string;
     className: string;
 }
 
 
-const Logo: React.FC<IProps> = ({ className }) => {
+const Logo: React.FC<Props> = ({ className }) => {
     return (
         <div className='inline-block m-0 p-0'>
             <svg className={`w-auto ${className}`} viewBox='0 0 100 100' version='1.1'

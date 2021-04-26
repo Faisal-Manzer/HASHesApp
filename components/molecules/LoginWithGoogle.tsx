@@ -16,7 +16,7 @@ const LoginWithGoogle = () => {
         return (
             <Button onClick={() => signIn('google')} className='bg-black rounded-lg text-white hover:shadow text-lg'>
                 <LoginIcon className='h-6 mx-2' />
-                Sign In
+                Login
             </Button>
         );
 
