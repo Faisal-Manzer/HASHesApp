@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import MongooseConnect from 'middleware/mongoose';
 
-import PaytmPayment from 'models/paytmPayment';
-import PaytmChecksum from 'helpers/PaytmChecksum';
+import MongooseConnect from 'middleware/mongoose.middleware';
+import PaytmPayment from 'models/paytmPayment.model';
+import PaytmChecksum from 'helpers/payment/paytmChecksum.payment.helper';
 
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {

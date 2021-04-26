@@ -26,7 +26,7 @@ class PaytmChecksum {
             var error = "string or object expected, " + (typeof params) + " given.";
             return Promise.reject(error);
         }
-        if (typeof params !== "string"){
+        if (typeof params !== "string") {
             params = PaytmChecksum.getStringByParams(params);
         }
         return PaytmChecksum.generateSignatureByString(params, key);
@@ -38,10 +38,10 @@ class PaytmChecksum {
             var error = "string or object expected, " + (typeof params) + " given.";
             return Promise.reject(error);
         }
-        if(params.hasOwnProperty("CHECKSUMHASH")){
+        if (params.hasOwnProperty("CHECKSUMHASH")) {
             delete params.CHECKSUMHASH
         }
-        if (typeof params !== "string"){
+        if (typeof params !== "string") {
             params = PaytmChecksum.getStringByParams(params);
         }
         return PaytmChecksum.verifySignatureByString(params, key, checksum);
@@ -75,8 +75,7 @@ class PaytmChecksum {
 
     static getStringByParams(params) {
         var data = {};
-        Object.keys(params).sort().forEach(function(key,value) {
-            console.log({ key });
+        Object.keys(params).sort().forEach(function (key, value) {
             data[key] = (params[key] !== null && params[key].toLowerCase() !== "null") ? params[key] : "";
         });
         return Object.values(data).join('|');
@@ -88,7 +87,7 @@ class PaytmChecksum {
     }
     static calculateChecksum(params, key, salt) {
         var hashString = PaytmChecksum.calculateHash(params, salt);
-        return PaytmChecksum.encrypt(hashString,key);
+        return PaytmChecksum.encrypt(hashString, key);
     }
 }
 PaytmChecksum.iv = '@@@@&&&&####$$$$';

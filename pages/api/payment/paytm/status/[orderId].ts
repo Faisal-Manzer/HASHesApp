@@ -1,10 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import PaytmPayment from 'models/paytmPayment';
+import MongooseConnect from 'middleware/mongoose.middleware';
+import PaytmPayment from 'models/paytmPayment.model';
 import { APIError, __ } from 'helpers/errors';
 
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const error = APIError(res);
 
     try {
@@ -16,3 +17,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         error(__.UNKNOWN_ERROR_OCCURRED);
     }
 }
+
+export default MongooseConnect(handler);

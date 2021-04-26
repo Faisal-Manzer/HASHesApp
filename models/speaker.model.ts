@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 
 
 const Speaker = new Schema({
-    name: { type: String },
+    name: { type: String, required: true },
     img: { type: String },
-    email: { type: String },
+    email: { type: String, required: true },
     linkedin: { type: String },
 
     user: { type: Schema.Types.ObjectId, ref: 'users' }

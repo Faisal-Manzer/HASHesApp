@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface IProps {
+interface Props {
     [key: string]: any;
 
     type?: 'text' | 'number';
@@ -10,10 +10,10 @@ interface IProps {
 }
 
 
-const Input: React.FC<IProps> = ({ onChange, className, type = 'text', disabled = false, ...extraProps }) => (
+const Input: React.FC<Props> = ({ onChange, className, type = 'text', disabled = false, ...extraProps }) => (
     <input
         type={type}
-        className={`rounded-lg text-lg border-2 border-gray-100 focus:ring-transparent focus:border-transparent focus:bg-gray-100 focus:text-black transition ${className}`}
+        className={`rounded-lg text-lg border-2 border-gray-100 focus:ring-transparent focus:border-transparent focus:bg-gray-100 focus:text-black transition placeholder-gray-300 ${className}`}
         onChange={(e) => onChange(e.target.value)}
         disabled={disabled}
         {...extraProps}

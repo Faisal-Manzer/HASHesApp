@@ -1,10 +1,10 @@
 import React from 'react';
 
-interface IProps {
+interface Props {
     className?: string;
 }
 
-const DiscordIcon: React.FC<IProps> = ({ className }) => (
+const DiscordIcon: React.FC<Props> = ({ className }) => (
     <div className='inline-block m-0 p-0'>
         <svg className={`w-auto ${className}`} role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><title>Discord icon</title>
             <path

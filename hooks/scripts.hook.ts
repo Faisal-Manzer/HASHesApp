@@ -9,6 +9,7 @@ interface Params {
 
 export const useScript = (src: string, { callback, id, }: Params) => {
     const [loaded, setLoaded] = useState(false);
+
     useEffect(() => {
         const existingScript = document.getElementById(id);
 

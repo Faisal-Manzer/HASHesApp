@@ -15,8 +15,10 @@ class CustomDocument extends Document {
                     />
                 </Head>
                 <body className='font-body font-medium bg-gray-50 text-gray-900'>
-                <Main />
-                <NextScript />
+                    <Main />
+                    <NextScript />
+
+                    <script src='https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js' async></script>
                 </body>
             </Html>
         );

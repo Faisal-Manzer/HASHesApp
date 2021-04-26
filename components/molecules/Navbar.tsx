@@ -2,13 +2,14 @@ import React from 'react';
 
 import Button from 'components/atoms/Button';
 import Banner from 'components/atoms/Banner';
+import Permission from 'components/atoms/Permission';
 
 import LoginWithGoogle from 'components/molecules/LoginWithGoogle';
 
 import DiscordIcon from 'components/icons/DiscordIcon';
 import WhatsAppIcon from 'components/icons/WhatsAppIcon';
 
-import { NAV_BAR_LINKS } from 'helpers/constants/app';
+import { NAV_BAR_LINKS } from 'helpers/constants/app.constants.helper';
 
 
 const Navbar: React.FC = () => (
@@ -19,10 +20,12 @@ const Navbar: React.FC = () => (
             </Button>
 
             <div className='hidden md:flex flex-wrap items-center space-x-4 text-gray-500'>
-                {NAV_BAR_LINKS.map(({ label, href }) => (
-                    <Button href={href} key={label}>
-                        {label}
-                    </Button>
+                {NAV_BAR_LINKS.map(({ label, href, permission }) => (
+                    <Permission permission={permission} key={label}>
+                        <Button href={href}>
+                            {label}
+                        </Button>
+                    </Permission>
                 ))}
             </div>
 

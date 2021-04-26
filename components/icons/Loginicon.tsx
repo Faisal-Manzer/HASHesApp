@@ -1,10 +1,10 @@
 import React from 'react';
 
-interface IProps {
+interface Props {
     className?: string;
 }
 
-const LoginIcon: React.FC<IProps> = ({ className = '' }) => (
+const LoginIcon: React.FC<Props> = ({ className = '' }) => (
     <div className='inline-block m-0 p-0'>
         <svg className={`w-auto ${className}`} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'
              fill='currentColor'>
