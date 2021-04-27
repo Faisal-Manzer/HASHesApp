@@ -1,6 +1,5 @@
 import React from 'react';
 import { NextPage } from 'next';
-import { getSession } from 'next-auth/client';
 import { useRouter } from 'next/router'
 
 import Page from 'components/organisms/Page';
@@ -30,8 +29,9 @@ const PaytmStatus: NextPage = () => {
     const { orderId } = router.query;
     const { loading, data: { status } } = useAPI({
         url: `/api/payment/paytm/status/${orderId}/`,
-        defaultResponse: { status: 'INVALID' }
-    })
+        defaultResponse: { status: 'INVALID' },
+        respectRouter: true,
+    });
 
     return (
         <Page title={`Status of order: ${orderId}`} description='Check your transaction status'>
@@ -83,10 +83,5 @@ const PaytmStatus: NextPage = () => {
     );
 };
 
-
-export async function getServerSideProps(context) {
-    const session = await getSession(context);
-    return { props: { session } };
-}
 
 export default PaytmStatus;
