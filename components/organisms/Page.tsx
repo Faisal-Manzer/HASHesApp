@@ -18,7 +18,6 @@ interface IProps {
     hideNavbar?: boolean;
     authenticationRequired?: boolean;
     permission?: Permission;
-    disablePermissionCheck?: boolean;
 }
 
 
@@ -30,8 +29,7 @@ const Page: React.FC<IProps> = ({
     hideDonateBanner = false,
     hideNavbar = false,
     authenticationRequired = false,
-    permission,
-    disablePermissionCheck = false
+    permission = null,
 }) => {
     const [session, loading] = useSession();
     const hasPermission = usePermission(permission);
@@ -45,7 +43,7 @@ const Page: React.FC<IProps> = ({
             {!hideDonateBanner && <DonateBanner />}
             {!hideNavbar && <Navbar />}
             <div className='p-4 md:p-8'>
-                {!disablePermissionCheck && !hasPermission && <PermissionRequired />}
+                {permission && !hasPermission && <PermissionRequired />}
                 {hasPermission && (
                     <>
                         {!authenticationRequired && children}

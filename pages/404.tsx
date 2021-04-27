@@ -10,7 +10,6 @@ const NotFound: NextPage = () => {
     <Page
       title='404 Not Found'
       description='Page not found'
-      disablePermissionCheck={true}
     >
       <div className='flex justify-center items-center'>
         <div>

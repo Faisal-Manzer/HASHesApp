@@ -7,6 +7,7 @@ import { Permission } from 'types/auth.type';
 export const usePermission = (permission?: Permission) => {
     const [session, loading] = useSession();
 
+    if (!permission) return true;
     if (loading) return false;
     return hasPermission(session, permission);
 };
