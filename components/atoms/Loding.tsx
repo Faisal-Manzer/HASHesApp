@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Spinner from 'components/atoms/Spinner';
+
 interface Props {
   className?: string;
 }
@@ -7,16 +9,9 @@ interface Props {
 
 const Loading: React.FC<Props> = ({ className = '' }) => (
   <div className='text-center font-display text-xl text-gray-600'>
-    {/* @ts-ignore */}
-    <lottie-player
-      src='https://assets3.lottiefiles.com/packages/lf20_iirumcmo.json'
-      background='transparent'
-      speed={1}
-      className='h-28 md:h-56 w-auto m-auto'
-      loop
-      autoplay
-    />
+    <img className='h-28 md:h-56 w-auto' src='/gifs/Loading.gif' />
     <div className={className}>
+      <Spinner className='h-5 text-yellow-600' />
       Loading
     </div>
   </div>

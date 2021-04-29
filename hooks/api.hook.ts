@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import axios, { AxiosRequestConfig } from 'axios';
+import { useRouter } from 'next/router'
 import NProgress from 'nprogress';
 
 import { Obj } from 'types/basic.type';
@@ -11,13 +12,15 @@ interface Options {
     manual?: boolean;
     parallel?: boolean;
     defaultResponse?: Obj;
+    respectRouter?: boolean;
 }
 
 export const useAPI = ({
     url, config,
     initialData = {}, manual = false, parallel = false,
-    defaultResponse = null
+    defaultResponse = null, respectRouter = false
 }: Options) => {
+    const router = useRouter();
     const [{ loading, error, errorResponse, response, }, setState] = useState({
         loading: !manual,
         error: false,
@@ -48,8 +51,19 @@ export const useAPI = ({
     }
 
     useEffect(() => {
-        if (!manual) execute();
-    }, [])
+        if (!manual && !respectRouter) execute();
+        if (!manual) {
+            if (respectRouter) {
+                if (router.asPath !== router.route) execute();
+            } else execute();
+        }
+    }, []);
+
+    useEffect(() => {
+        if (respectRouter && !manual) {
+            if (router.asPath !== router.route) execute();
+        }
+    }, [router, respectRouter]);
 
     return {
         loading,
