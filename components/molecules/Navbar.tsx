@@ -28,12 +28,12 @@ const Navbar: React.FC = () => (
                     </Permission>
                 ))}
             </div>
-
         </div>
         <div className='md:hidden my-2'>
             {' '}
         </div>
         <div className='flex space-x-6 items-center justify-center md:justify-end'>
+            
             <a href='https://discord.gg/e98fuehcQf' target='_blank' rel='noreferrer'>
                 <DiscordIcon className='h-6' />
             </a>

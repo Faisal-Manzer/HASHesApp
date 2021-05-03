@@ -20,6 +20,9 @@
         ]
     },
     "dependencies": {
+        "@headlessui/react": "^1.1.1",
+        "@heroicons/react": "^1.0.1",
+        "@tailwindcss/typography": "^0.4.0",
         "axios": "^0.21.1",
         "crypto": "^1.0.1",
         "husky": "^5.2.0",
