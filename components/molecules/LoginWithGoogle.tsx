@@ -1,9 +1,8 @@
 import React from 'react';
-import { signIn, signOut, useSession } from 'next-auth/client';
+import { signIn, useSession } from 'next-auth/client';
 import Button from 'components/atoms/Button';
 import LoginIcon from 'components/icons/LogoutIcon';
-import LogoutIcon from 'components/icons/LogoutIcon';
-import Example from 'components/molecules/Example';
+import Userlogout from 'components/molecules/Userlogout';
 
 
 const LoginWithGoogle = () => {
@@ -21,10 +20,7 @@ const LoginWithGoogle = () => {
 
     return (
         <>
-            {/* <Button onClick={signOut} className='text-lg' data-tip data-for='sign-out-tooltip'>
-                <img className='w-8 h-8 rounded-full mx-2' src={session.user.image} alt={session.user.name} />
-            </Button> */}
-            <Example />
+            <Userlogout />
         </>
     );
 };
