@@ -16,6 +16,5 @@ export const NAV_BAR_LINKS: NavBarLinks[] = [
     {
         label: 'About Us',
         href: '/about',
-        // permission: PERMISSIONS.VIEW_USERS,
     },
 ];

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-quotes */
 import React, { useEffect, useState } from 'react';
 import { NextPage } from 'next';
 import NProgress from 'nprogress';
@@ -46,18 +45,18 @@ const Donate: NextPage = () => {
     };
 
     return (
-        <Page title="Show some love, Donate us" description="" hideDonateBanner={true} authenticationRequired={true}>
-            <div className="grid grid-cols-1 md:grid-cols-2 space-y-4 space-x-4">
+        <Page title='Show some love, Donate us' description='' hideDonateBanner={true} authenticationRequired={true}>
+            <div className='grid grid-cols-1 md:grid-cols-2 space-y-4 space-x-4'>
                 <div>
-                    <PageHeading className="text-center">
-                        Donate <HeartIcon className="h-6 md:h-12 text-yellow-500" />
+                    <PageHeading className='text-center'>
+                        Donate <HeartIcon className='h-6 md:h-12 text-yellow-500' />
                     </PageHeading>
 
-                    <div className="flex justify-center items-center my-2 md:my-4">
-                        <div className="shadow-lg bg-white p-4 rounded">
-                            <div className="text-2xl md:text-3xl text-gray-300 font-display">Choose your amount.</div>
+                    <div className='flex justify-center items-center my-2 md:my-4'>
+                        <div className='shadow-lg bg-white p-4 rounded'>
+                            <div className='text-2xl md:text-3xl text-gray-300 font-display'>Choose your amount.</div>
 
-                            <div className="my-2 md:my-4 grid grid-cols-2 gap-4">
+                            <div className='my-2 md:my-4 grid grid-cols-2 gap-4'>
                                 {DefaultAmounts.map((price) => (
                                     <DonateButton
                                         key={price.toString()}
@@ -71,15 +70,15 @@ const Donate: NextPage = () => {
                                 ))}
 
                                 <Input
-                                    type="number"
+                                    type='number'
                                     min={1}
-                                    placeholder="Your Custom Amount"
+                                    placeholder='Your Custom Amount'
                                     value={touched ? amount : ''}
                                     onChange={(value) => {
                                         setAmount(Number(value));
                                         setTouched(true);
                                     }}
-                                    className="col-span-1 md:col-span-2"
+                                    className='col-span-1 md:col-span-2'
                                 />
                             </div>
 
@@ -96,9 +95,9 @@ const Donate: NextPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="text-xl text-gray-400">
+                <div className='text-xl text-gray-400'>
                     <div>
-                        <div className="text-3xl text-black font-black">TO SHARE IS TO GROW</div>
+                        <div className='text-3xl text-black font-black'>TO SHARE IS TO GROW</div>
                         <br />
                         <p>
                             The journey of HASHes has been one filled with amazing and inspiring stories. Over the
