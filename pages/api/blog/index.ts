@@ -5,22 +5,19 @@ import { hasPermission } from 'helpers/auth';
 import Blog from 'models/blog.models';
 import connectDB from 'middleware/mongoose.middleware';
 
+import { object, string } from 'yup';
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const error = APIError(res);
 
     if (req.method === 'POST') {
         const { title, description, markdown } = req.body;
 
-        if (
-            !title ||
-            title.trim() === '' ||
-            !description ||
-            description.trim() === '' ||
-            !markdown ||
-            markdown.trim() === ''
-        ) {
-            return error(__.INVALID_DATA_ERROR);
-        }
+        const schema = object({
+            title: string().required(),
+            description: string().required().max(500),
+            markdown: string().required(),
+        });
 
         let session;
         try {
@@ -41,6 +38,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         if (!isPermitted) {
             return error(__.NO_PERMISSION);
+        }
+
+        try {
+            await schema.validate(req.body);
+        } catch (err) {
+            err.errors[1] = 422;
+            const errorTitle = err.errors[0].split(' ');
+            err.errors.push(`Please enter the ${errorTitle[0]}`);
+            error(err.errors);
         }
 
         const newBlog = new Blog({
