@@ -17,6 +17,7 @@ module.exports = {
     },
     plugins: [
         require('@tailwindcss/forms'),
+        require('@tailwindcss/typography'),
     ],
     corePlugins: {
         outline: false,
