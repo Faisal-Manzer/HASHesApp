@@ -14,6 +14,10 @@ export const NAV_BAR_LINKS: NavBarLinks[] = [
         permission: PERMISSIONS.VIEW_USERS,
     },
     {
+        label: 'About Us',
+        href: '/about',
+    },
+    {
         label: 'Create Blog',
         href: '/createblog',
         permission: PERMISSIONS.VIEW_USERS,
