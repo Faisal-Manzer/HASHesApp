@@ -1,6 +1,6 @@
 import React from 'react';
 import { NextPage } from 'next';
-
+import Event from 'components/atoms/Event';
 import Page from 'components/organisms/Page';
 import WelcomeText from 'components/atoms/WelcomeText';
 import Banner from 'components/atoms/Banner';
@@ -21,10 +21,10 @@ const Home: NextPage = () => {
                         A community of students, by students, for students
                     </div>
                 </div>
+                <Event />
             </div>
         </Page>
     );
-};
-
+}
 
 export default Home;

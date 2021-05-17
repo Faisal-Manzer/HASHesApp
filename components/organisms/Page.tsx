@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useSession } from 'next-auth/client';
 
 import { Permission } from 'types/auth.type';
-
+import Footer from 'components/atoms/Footer';
 import Navbar from 'components/molecules/Navbar';
 import DonateBanner from 'components/atoms/DonateBanner';
 import NotAuthenticated403 from 'components/organisms/NotAuthenticated403';
@@ -56,6 +56,7 @@ const Page: React.FC<IProps> = ({
                     </>
                 )}
             </div>
+            {<Footer />}
         </div>
     );
 };
